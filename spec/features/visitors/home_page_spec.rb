@@ -10,7 +10,12 @@ feature 'Home page' do
   #   Then I see "..."
   scenario 'visit the home page' do
     visit root_path
-    fail "Add a test to make sure we are on this page"
+    RSpec.describe "routing to /", type: 'routing' do
+      it "should go to visitors#index" do
+        expect(get: "/").to route_to(controller: "visitors", action: "index")
+      end
+    end
+    # fail "Add a test to make sure we are on this page"
     # expect(page).to have_content #...
   end
 end
